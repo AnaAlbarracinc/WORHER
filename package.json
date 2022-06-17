@@ -3,17 +3,20 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "node server.js --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
     "@angular/cdk": "^13.3.4",
+    "@angular/cli": "^14.0.2",
     "@angular/common": "~13.1.0",
     "@angular/compiler": "~13.1.0",
+    "@angular/compiler-cli": "~13.1.0",
     "@angular/core": "~13.1.0",
     "@angular/fire": "^7.4.1",
     "@angular/forms": "~13.1.0",
@@ -23,16 +26,17 @@
     "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.2.0-beta1",
     "crypto-js": "^4.1.1",
+    "express": "^4.18.1",
     "jquery": "^3.6.0",
+    "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "sweetalert2": "^11.4.17",
     "tslib": "^2.3.0",
+    "typescript": "~4.5.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.2",
-    "@angular/cli": "~13.1.2",
-    "@angular/compiler-cli": "~13.1.0",
     "@types/bootstrap": "^5.1.12",
     "@types/crypto-js": "^4.1.1",
     "@types/jasmine": "~3.10.0",
@@ -43,7 +47,10 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.2"
+    "karma-jasmine-html-reporter": "~1.7.0"
+  },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.1.2"
   }
 }
