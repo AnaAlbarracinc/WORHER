@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "WORHER"
+  "defaultProject": "WORHER",
+  "cli": {
+    "analytics": "00d7a7e2-e479-4c85-ba61-1622d933702a"
+  }
 }
