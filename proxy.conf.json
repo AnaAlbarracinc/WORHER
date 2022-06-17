@@ -1,6 +1,6 @@
 {
     "/api/*":{
-      "target":"https://app-name-worher.herokuapp.com",
+      "target":"https://app-name-worher.herokuapp.com/",
       "secure":false,
       "logLevel":"debug"
     }

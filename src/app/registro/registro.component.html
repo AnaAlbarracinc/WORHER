@@ -2,64 +2,54 @@
 <div class="col-md-4 contenedor">
     <div class="card card-container p-4 registro">
         <img id="profile-img" src="assets/images/logo.png">
-        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" autocomplete="off" novalidate>
+            <span class="obligatorio" *ngIf="f.submitted && isSignUpFailed">
+                El registro ha fallado.<br />{{ errorMessage }}
+            </span>
             <!-- NOMBRE + CONDICIÓN DE ERROR 3 <= NOMBRE <= 20 -->
             <div class="form-group">
-                <label for="nombre">Nombre<span class='obligatorio'>*</span></label>
+                <label for="nombre">Nombre 
+                    <span class='obligatorio'>* </span>
+                    <span class="obligatorio error" *ngIf="nombre.errors && f.submitted && nombre.errors['required']">CAMPO OBLIGATORIO</span>
+                    <span class="obligatorio error" *ngIf="nombre.errors && f.submitted && nombre.errors['minlength']">EL NOMBRE DEBE TENER AL MENOS 3 CARACTERES</span>
+                    <span class="obligatorio error" *ngIf="nombre.errors && f.submitted && nombre.errors['maxlength']">EL NOMBRE ES DEMASIADO LARGO</span>
+                </label>
                 <input type="text" aria-label="Introducir nombre de usuario" class="form-control" name="nombre" id="nombre" [(ngModel)]="form.nombre" required minlength="3"
-                    maxlength="20" #nombre="ngModel" />
-                <div class="alert-danger" *ngIf="nombre.errors && f.submitted">
-                    <div *ngIf="nombre.errors['required']">Se requiere un Nombre.</div>
-                    <div *ngIf="nombre.errors['minlength']">
-                        El nombre debe contener al menos 3 caracteres.
-                    </div>
-                    <div *ngIf="nombre.errors['maxlength']">
-                        El nombre es demasiado largo
-                    </div>
-                </div>
+                    maxlength="20" #nombre="ngModel" />                
             </div>
 
             <!-- APELLIDO + CONDICIÓN DE ERROR 3 <= APELLIDO <= 50 -->
             <div class="form-group">
-                <label for="apellido">Apellido<span class='obligatorio'>*</span></label>
+                <label for="apellido">Apellido 
+                    <span class='obligatorio'>* </span>
+                    <span class='obligatorio error' *ngIf="apellido.errors && f.submitted && apellido.errors['required']">CAMPO OBLIGATORIO</span>
+                    <span class='obligatorio error' *ngIf="apellido.errors && f.submitted && apellido.errors['minlength']">EL APELLIDO DEBE TENER AL MENOS 3 CARACTERES</span>
+                    <span class='obligatorio error' *ngIf="apellido.errors && f.submitted && apellido.errors['maxlength']">EL APELLIDO ES DEMASIADO LARGO</span>
+                </label>
                 <input type="text" aria-label="Introducir apellido de usuario" class="form-control" name="apellido" id="apellido" [(ngModel)]="form.apellido" required
                     minlength="3" maxlength="50" #apellido="ngModel" />
-                <div class="alert-danger" *ngIf="apellido.errors && f.submitted">
-                    <div *ngIf="apellido.errors['required']">Se requiere al menos un apellido.</div>
-                    <div *ngIf="apellido.errors['minlength']">
-                        El apellido debe contener al menos 3 caracteres.
-                    </div>
-                    <div *ngIf="apellido.errors['maxlength']">
-                        El apellido es demasiado largo
-                    </div>
-                </div>
             </div>
 
             <!-- EMAIL + CONDICIÓN DE ERROR Formato email -->
             <div class="form-group">
-                <label for="email">Correo Electrónico<span class='obligatorio'>*</span></label>
+                <label for="email">Correo Electrónico 
+                    <span class='obligatorio'>* </span>
+                    <span class='obligatorio error' *ngIf="email.errors && f.submitted && email.errors['required']">CAMPO OBLIGATORIO</span>
+                    <span class='obligatorio error' *ngIf="email.errors && f.submitted && email.errors['email']">DEBE SER UNA DIRECCIÓN DE CORREO ELECTRÓNICO VÁLIDA</span>
+                </label>
                 <input type="email" class="form-control" aria-label="Introducir email de usuario" name="email" id="email" [(ngModel)]="form.email" required email
                     #email="ngModel" />
-                <div class="alert-danger" *ngIf="email.errors && f.submitted">
-                    <div *ngIf="email.errors['required']">Se requiere una dirección de correo electrónico.</div>
-                    <div *ngIf="email.errors['email']">
-                        Debe ser un una dirección de correo electrónico válida.
-                    </div>
-                </div>
             </div>
 
             <!-- CONTRASEÑA + CONDICIÓN DE ERROR CONTRASEÑA >= 6 -->
             <div class="form-group">
-                <label for="password">Contraseña<span class='obligatorio'>*</span></label>
+                <label for="password">Contraseña 
+                    <span class='obligatorio'>*</span>
+                    <span class='obligatorio error' *ngIf="password.errors && f.submitted && password.errors['required']"> CAMPO OBLIGATORIO</span>
+                    <span class='obligatorio error' *ngIf="password.errors && f.submitted && password.errors['minlength']">LA CONTRASEÑA DEBE TENER AL MENOS 6 CARACTERES</span>
+                </label>
                 <input type="password" class="form-control" aria-label="Introducir contraseña" id="password" name="password" [(ngModel)]="form.password" required
                     minlength="6" #password="ngModel" />
-                <div class="alert-danger" *ngIf="password.errors && f.submitted">
-                    <div *ngIf="password.errors['required']">Se requiere una contraseña.</div>
-                    <div *ngIf="password.errors['minlength']">
-                        La contraseña debe contener al menos 6 caracteres.
-                    </div>
-                </div>
             </div>
 
             
@@ -67,9 +57,7 @@
                 <button class="btn boton btn-block" aria-label="registrar usuario">Resgistrarme</button>
             </div>
             <p>¿Ya tienes una cuenta? <a href="#" routerLink="/login" class="enlace" aria-label="ir a login">Inicia sesión</a></p>
-            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                El registro ha fallado.<br />{{ errorMessage }}
-            </div>
+            
 
         </form>
 
