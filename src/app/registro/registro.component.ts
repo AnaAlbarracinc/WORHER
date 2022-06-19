@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
@@ -31,6 +32,7 @@ export class RegistroComponent implements OnInit {
       next: data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        Swal.fire('Registro correcto', 'El registro se ha realizado correctamente.', 'success');
         this.route.navigate(['/login'])
       },
 

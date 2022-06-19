@@ -19,7 +19,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "crypto-js"
-           ],
+            ],
             "outputPath": "dist/worher",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -99,6 +99,14 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/worher",
+            "netlifyToken": "AnaAlbarracinC",
+            "siteId": ""
           }
         }
       }

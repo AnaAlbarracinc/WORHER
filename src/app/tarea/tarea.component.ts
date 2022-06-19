@@ -52,13 +52,13 @@ export class TareaComponent implements OnInit {
   borrarTarea() {
     this.bbddProyectos.deleteTarea(this.tarea.id).subscribe(
       () => {
+        this.bbddProyectos.cargar();
+        this.actualizar.emit(true);
 
       }, (error) => {
         Swal.fire("ERROR", "Error al eliminar la tarea", "error");
       }
     );
-    this.bbddProyectos.cargar();
-    this.actualizar.emit(true);
 
   }
 

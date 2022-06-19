@@ -3,11 +3,11 @@
     <div class="card card-container p-4 registro">
         <img id="profile-img" src="assets/images/logo.png">
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" autocomplete="off" novalidate>
-            <span class="obligatorio" *ngIf="f.submitted && isSignUpFailed">
+            <span class="obligatorio m-2" *ngIf="f.submitted && isSignUpFailed">
                 El registro ha fallado.<br />{{ errorMessage }}
             </span>
             <!-- NOMBRE + CONDICIÓN DE ERROR 3 <= NOMBRE <= 20 -->
-            <div class="form-group">
+            <div class="form-group m-2">
                 <label for="nombre">Nombre 
                     <span class='obligatorio'>* </span>
                     <span class="obligatorio error" *ngIf="nombre.errors && f.submitted && nombre.errors['required']">CAMPO OBLIGATORIO</span>
@@ -19,7 +19,7 @@
             </div>
 
             <!-- APELLIDO + CONDICIÓN DE ERROR 3 <= APELLIDO <= 50 -->
-            <div class="form-group">
+            <div class="form-group m-2">
                 <label for="apellido">Apellido 
                     <span class='obligatorio'>* </span>
                     <span class='obligatorio error' *ngIf="apellido.errors && f.submitted && apellido.errors['required']">CAMPO OBLIGATORIO</span>
@@ -31,7 +31,7 @@
             </div>
 
             <!-- EMAIL + CONDICIÓN DE ERROR Formato email -->
-            <div class="form-group">
+            <div class="form-group m-2">
                 <label for="email">Correo Electrónico 
                     <span class='obligatorio'>* </span>
                     <span class='obligatorio error' *ngIf="email.errors && f.submitted && email.errors['required']">CAMPO OBLIGATORIO</span>
@@ -42,7 +42,7 @@
             </div>
 
             <!-- CONTRASEÑA + CONDICIÓN DE ERROR CONTRASEÑA >= 6 -->
-            <div class="form-group">
+            <div class="form-group m-2">
                 <label for="password">Contraseña 
                     <span class='obligatorio'>*</span>
                     <span class='obligatorio error' *ngIf="password.errors && f.submitted && password.errors['required']"> CAMPO OBLIGATORIO</span>
@@ -53,7 +53,7 @@
             </div>
 
             
-            <div class="form-group">
+            <div class="form-group m-2">
                 <button class="btn boton btn-block" aria-label="registrar usuario">Resgistrarme</button>
             </div>
             <p>¿Ya tienes una cuenta? <a href="#" routerLink="/login" class="enlace" aria-label="ir a login">Inicia sesión</a></p>

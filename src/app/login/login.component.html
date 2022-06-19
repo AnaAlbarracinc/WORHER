@@ -13,11 +13,11 @@
         <article class="col-12 col-lg-4 card card-container p-4 login">
             <img id="profile-img" src="assets/images/logo.png" alt="logo de Worher"/>
             <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" autocomplete="off" novalidate>
-                <span class="obligatorio" *ngIf="f.submitted && isLoginFailed">
+                <span class="obligatorio m-2" *ngIf="f.submitted && isLoginFailed">
                     Error en el inicio de sesión: {{ errorMessage }}
                 </span>
     
-                <div class="form-group">
+                <div class="form-group m-2">
                     <label for="email">Email 
                         <span class='obligatorio'>* </span>
                         <span class="obligatorio error" *ngIf="email.errors && f.submitted">CAMPO OBLIGATORIO</span>
@@ -26,7 +26,7 @@
                         #email="ngModel" />
                 </div>
     
-                <div class="form-group">
+                <div class="form-group m-2">
                     <label for="password">Contraseña 
                         <span class='obligatorio'>* </span>
                         <span class="obligatorio error" *ngIf="password.errors && f.submitted && password.errors['required']">CAMPO OBLIGATORIO</span>
@@ -34,7 +34,7 @@
                     <input type="password" class="form-control" aria-label="Introducir contraseña" id="password" name="password" [(ngModel)]="form.password" required
                         #password="ngModel" />
                 </div>
-                <div class="form-group">
+                <div class="form-group m-2">
                     <button class="btn boton btn-block" aria-label="Iniciar sesión">
                         Iniciar Sesión
                     </button>

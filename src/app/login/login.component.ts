@@ -43,7 +43,10 @@ export class LoginComponent implements OnInit {
       },
 
       error: err => {
+        if(err.error!=null)
         this.errorMessage = err.error.message;
+        else
+        this.errorMessage = "Las credenciales no son correctas."
         this.isLoginFailed = true;
       }
 
