@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "worher": {
+      "hosting": {
+        "WORHER": [
+          "worher"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "worher"
+  }
+}

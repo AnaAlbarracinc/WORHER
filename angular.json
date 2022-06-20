@@ -102,11 +102,13 @@
           }
         },
         "deploy": {
-          "builder": "@netlify-builder/deploy:deploy",
+          "builder": "@angular/fire:deploy",
           "options": {
-            "outputPath": "dist/worher",
-            "netlifyToken": "AnaAlbarracinC",
-            "siteId": ""
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "WORHER:build:production",
+            "firebaseProject": "worher",
+            "firebaseHostingSite": "worher"
           }
         }
       }
