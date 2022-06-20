@@ -14,4 +14,4 @@ res.sendFile(path.join(__dirname+'/dist/worher/index.html'));
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 5000);
 
-app.set("trust proxy", "*");
+app.set("trust proxy", true);
